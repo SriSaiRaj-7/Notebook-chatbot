@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111311">
+  <title>Fieldnotes — PDF chat</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Documents">
+      <a class="brand" href="#" aria-label="Fieldnotes home">
+        <span class="brand-mark" aria-hidden="true">f</span>
+        <span>fieldnotes</span>
+      </a>
+
+      <div class="sidebar-heading">
+        <div>
+          <p class="eyebrow">YOUR LIBRARY</p>
+          <h1>Sources</h1>
+        </div>
+        <span class="doc-count" id="doc-count">2</span>
+      </div>
+
+      <label class="upload-zone" id="upload-zone" for="file-input" tabindex="0">
+        <span class="upload-icon" aria-hidden="true">↑</span>
+        <span class="upload-copy"><strong>Upload a PDF</strong><small>Drop it here or browse files</small></span>
+        <input id="file-input" type="file" accept="application/pdf,.pdf" multiple hidden>
+      </label>
+      <p class="upload-note">PDF files · Add sources to your conversation</p>
+
+      <div class="documents-heading">
+        <span>IN THIS NOTEBOOK</span>
+        <button class="text-button" id="select-all" type="button">Select all</button>
+      </div>
+      <ul class="document-list" id="document-list" aria-label="Uploaded documents">
+        <li class="document-item">
+          <label class="document-row">
+            <input type="checkbox" checked>
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-info"><span class="document-name">The Art of Noticing.pdf</span><small>18 pages</small></span>
+            <span class="selection-dot" aria-hidden="true"></span>
+          </label>
+        </li>
+        <li class="document-item">
+          <label class="document-row">
+            <input type="checkbox" checked>
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-info"><span class="document-name">Field Research Notes.pdf</span><small>32 pages</small></span>
+            <span class="selection-dot" aria-hidden="true"></span>
+          </label>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer"><span class="status-indicator"></span>Local preview <span>·</span> Ready</div>
+    </aside>
+
+    <main class="chat-panel">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="sidebar-toggle" type="button" aria-label="Toggle documents" aria-controls="sidebar" aria-expanded="false">
+          <span class="menu-glyph" aria-hidden="true">☰</span>
+        </button>
+        <div class="notebook-title"><span class="notebook-symbol" aria-hidden="true">✳</span><span>Untitled notebook</span></div>
+        <div class="topbar-actions">
+          <span class="context-count" id="context-count">2 sources selected</span>
+          <button class="icon-button sources-toggle" id="sources-toggle" type="button" aria-label="Toggle sources panel" aria-controls="sources-panel" aria-expanded="true"><span aria-hidden="true">▤</span></button>
+        </div>
+      </header>
+
+      <section class="conversation" id="conversation" aria-label="Chat messages" aria-live="polite">
+        <div class="conversation-inner" id="message-list">
+          <div class="welcome-block">
+            <span class="welcome-spark" aria-hidden="true">✳</span>
+            <p class="eyebrow">YOUR NOTEBOOK</p>
+            <h2>A little more curious.</h2>
+            <p>Ask a question across your sources, or follow a thread that catches your eye.</p>
+          </div>
+
+          <article class="message user-message">
+            <div class="message-content"><p>What are some ways to become more observant?</p></div>
+          </article>
+          <article class="message assistant-message">
+            <div class="assistant-avatar" aria-hidden="true">✳</div>
+            <div class="message-content">
+              <p>Both sources point to slowing down and paying attention on purpose. Try choosing one small detail to notice each day, then write down what surprised you. Over time, those observations become a richer picture of the world around you.</p>
+              <button class="citation-chip" type="button" data-source="The Art of Noticing.pdf" data-page="4"><span>↗</span> The Art of Noticing · p. 4</button>
+            </div>
+          </article>
+          <article class="message user-message">
+            <div class="message-content"><p>How could I make that a daily habit?</p></div>
+          </article>
+          <article class="message assistant-message">
+            <div class="assistant-avatar" aria-hidden="true">✳</div>
+            <div class="message-content">
+              <p>Pair it with a routine you already have. During your morning coffee or walk, pick a theme like light, sound, or movement. A quick note is enough; consistency matters more than writing something polished.</p>
+              <button class="citation-chip" type="button" data-source="Field Research Notes.pdf" data-page="12"><span>↗</span> Field Research Notes · p. 12</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="composer-wrap">
+        <form class="composer" id="chat-form">
+          <textarea id="message-input" rows="1" placeholder="Ask anything about your sources..." aria-label="Your message"></textarea>
+          <div class="composer-footer">
+            <span class="composer-hint"><span class="hint-spark" aria-hidden="true">✳</span> Grounded in your selected sources</span>
+            <button class="send-button" type="submit"><span>Send</span><span aria-hidden="true">↗</span></button>
+          </div>
+        </form>
+        <p class="disclaimer">AI responses can be inaccurate. Check important details in the source.</p>
+      </div>
+    </main>
+
+    <aside class="sources-panel" id="sources-panel" aria-label="Answer sources">
+      <div class="sources-header">
+        <div><p class="eyebrow">REFERENCE</p><h2>Sources</h2></div>
+        <span class="source-count">2</span>
+      </div>
+      <p class="sources-intro">Passages referenced in the latest answer.</p>
+      <div class="citation-list" id="citation-list">
+        <button class="source-card" type="button" data-source="The Art of Noticing.pdf" data-page="4">
+          <span class="source-card-top"><span class="pdf-icon" aria-hidden="true">PDF</span><span class="page-label">PAGE 04</span></span>
+          <span class="source-filename">The Art of Noticing.pdf</span>
+          <span class="source-quote">“Attention is the beginning of devotion. Notice what is here before reaching for what comes next.”</span>
+          <span class="source-open">View citation <span aria-hidden="true">↗</span></span>
+        </button>
+        <button class="source-card" type="button" data-source="Field Research Notes.pdf" data-page="12">
+          <span class="source-card-top"><span class="pdf-icon" aria-hidden="true">PDF</span><span class="page-label">PAGE 12</span></span>
+          <span class="source-filename">Field Research Notes.pdf</span>
+          <span class="source-quote">“A daily record of small observations can reveal patterns that a single moment would miss.”</span>
+          <span class="source-open">View citation <span aria-hidden="true">↗</span></span>
+        </button>
+      </div>
+      <div class="sources-footnote"><span class="footnote-mark" aria-hidden="true">✳</span><p>Citations connect answers back to the passages that informed them.</p></div>
+    </aside>
+  </div>
+  <div class="mobile-backdrop" id="mobile-backdrop" hidden></div>
+</body>
+</html>
